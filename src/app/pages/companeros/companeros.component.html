@@ -1,0 +1,28 @@
+<div class="companeros-container">
+  <h1>Mis Compañeros de Clase</h1>
+  <p class="subtitle">Aquí puedes ver los nombres de los estudiantes con quienes compartes cada materia.</p>
+
+  <div *ngFor="let grupo of grupos" class="card">
+    <h3> Materia: {{ grupo.materiaNombre }}</h3>
+
+    <ul class="lista-companeros" *ngIf="grupo.companeros.length > 0">
+      <li *ngFor="let nombre of grupo.companeros">
+        {{ nombre }}
+      </li>
+    </ul>
+
+    <div class="sin-companeros" *ngIf="grupo.companeros.length === 0">
+      No hay otros estudiantes registrados en esta materia.
+    </div>
+  </div>
+ 
+  <div class="sin-materias" *ngIf="grupos.length === 0">
+    Aún no te has inscrito en ninguna materia.
+  </div>
+  
+  <div class="actions">
+    <button mat-stroked-button routerLink="/dashboard">
+      Volver al dashboard
+    </button>
+  </div>
+</div>

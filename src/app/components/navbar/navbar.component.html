@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Registro Estudiantil</span>
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="authService.isLoggedIn(); else loggedOut">
+    <span class="user-name">Hola, {{ authService.getCurrentUser()?.nombre }}</span>
+    <button mat-button (click)="logout()">Cerrar sesión</button>
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <button mat-button routerLink="/login">Iniciar sesión</button>
+    <button mat-button routerLink="/register">Registrarse</button>
+  </ng-template>
+</mat-toolbar>

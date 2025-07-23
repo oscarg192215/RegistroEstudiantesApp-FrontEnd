@@ -1,0 +1,84 @@
+
+.dashboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .materias-list {
+    max-height: 300px;
+    overflow-y: auto;
+
+    mat-list-option {
+      font-weight: 500;
+      color: black; 
+
+      .mat-pseudo-checkbox {
+        background-color: #1976d2; 
+      }
+
+      &.mat-selected {
+        background: none !important; 
+      }
+
+      &.mat-disabled {
+        color: rgba(0, 0, 0, 0.3); 
+        pointer-events: none;
+      }
+
+      .creditos {
+        font-weight: normal;
+        color: #1976d2;;
+      }
+
+      small {
+        font-size: 0.9rem;
+        color: black;
+      }
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+  }
+}
+
+
+::ng-deep .snackbar-exito {
+  background-color: #4caf50 !important; 
+  color: white;
+}
+
+::ng-deep .snackbar-error {
+  background-color: #f44336 !important; 
+  color: white;
+}
+
+
+
+

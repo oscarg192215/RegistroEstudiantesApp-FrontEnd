@@ -1,0 +1,73 @@
+
+<div class="dashboard-container">
+  <h1>Bienvenido, {{ nombreEstudiante }} 👋</h1>
+  <p class="subtitle">Selecciona hasta 3 materias sin repetir profesor.</p>
+
+  <div class="card">
+    <h2>Materias Disponibles</h2>
+
+    <ng-container *ngIf="!cargando; else loading">
+      <div *ngFor="let materia of materias" class="materia-item">
+        <mat-checkbox
+          [disabled]="debeDeshabilitar(materia)"
+          [checked]="estaSeleccionada(materia)"
+          (change)="toggleSeleccion(materia)"
+        >
+          <span style="color: black">{{ materia.nombre }}</span>
+          <span class="creditos" style="color: purple"> (3 créditos)</span> -
+          <small style="color: black">Prof. {{ materia.profesorNombre }}</small>
+        </mat-checkbox>
+      </div>
+
+      <div class="actions">
+        
+        <button
+          *ngIf="!tieneMateriasAsignadas"
+          mat-raised-button
+          color="primary"
+          (click)="asignarMaterias()"
+          [disabled]="!puedeAsignar || cargando"
+        >
+          <mat-spinner *ngIf="cargando" [diameter]="20"></mat-spinner>
+          <span *ngIf="!cargando">Guardar Materias</span>
+        </button>
+
+        
+        <button
+          *ngIf="tieneMateriasAsignadas"
+          mat-raised-button
+          color="accent"
+          (click)="actualizarMaterias()"
+          [disabled]="!seRealizaronCambios || !puedeAsignar || cargando"
+        >
+          <mat-spinner *ngIf="cargando" [diameter]="20"></mat-spinner>
+          <span *ngIf="!cargando">Actualizar Materias</span>
+        </button>
+
+        <button mat-stroked-button routerLink="/companeros" *ngIf="tieneRegistros()">
+          Ver Compañeros de Clase
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="loader-container">
+        <mat-spinner></mat-spinner>
+        <p>Cargando materias, por favor espera...</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

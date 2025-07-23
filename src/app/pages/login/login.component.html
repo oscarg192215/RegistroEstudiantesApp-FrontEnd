@@ -1,0 +1,47 @@
+<div class="form-container">
+  <div class="card">
+    <h2>Iniciar Sesión</h2>
+    
+    <div *ngIf="loading" class="loader-overlay">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field appearance="outline" class="field-block">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="hasError('email') && loginForm.get('email')?.touched">
+          Email es obligatorio y debe ser válido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field-block">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="hasError('password') && loginForm.get('password')?.touched">
+          Contraseña es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit" 
+        [disabled]="loading || loginForm.invalid" 
+        class="btn-full">
+        Ingresar
+      </button>
+    </form>
+
+    <p class="redirect">
+      ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
+    </p>
+  </div>
+</div>
+
+
+
