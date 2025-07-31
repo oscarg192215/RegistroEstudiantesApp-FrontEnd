@@ -1,4 +1,4 @@
-<div class="form-container"> 
+<div class="form-container">
   <div class="card">
     <h2>Crear Cuenta Estudiante</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
@@ -33,14 +33,16 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit"
-        class="btn-full"
+      <button mat-raised-button color="primary" type="submit" class="btn-full"
         [disabled]="registerForm.invalid || cargando">
         <ng-container *ngIf="!cargando; else loading">
           Registrarme
         </ng-container>
         <ng-template #loading>
-          <mat-spinner [diameter]="24" strokeWidth="3"></mat-spinner>
+          <div class="loading">
+            <mat-spinner [diameter]="24" strokeWidth="3"></mat-spinner>
+            <p>Registrando...</p>
+          </div>
         </ng-template>
       </button>
 
@@ -51,7 +53,3 @@
     </p>
   </div>
 </div>
-
-
-
-

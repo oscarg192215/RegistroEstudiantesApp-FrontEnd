@@ -40,7 +40,7 @@
           (click)="actualizarMaterias()"
           [disabled]="!seRealizaronCambios || !puedeAsignar || cargando"
         >
-          <mat-spinner *ngIf="cargando" [diameter]="20"></mat-spinner>
+          <mat-spinner *ngIf="cargando" [diameter]="10"></mat-spinner>
           <span *ngIf="!cargando">Actualizar Materias</span>
         </button>
 
